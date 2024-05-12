@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Registration {% endblock title %}
+
+{% block content %}
+
+<section class="contact-us">
+    <div class="container">
+      <div class="row">
+      
+        <div class="col-lg-12">
+          <div class="down-contact">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="sidebar-item contact-form">
+                  <div class="sidebar-heading">
+                    <h2>Create your account</h2>
+                  </div>
+                  <div class="content">
+                    <form action="{% url 'registration' %}" method="POST">
+                      {% csrf_token %}
+                        <div class="form-row">
+                          <div class="col form-group">
+                            <label>First name</label>
+                              {{ form.first_name }}
+                          </div> <!-- form-group end.// -->
+                          <div class="col form-group">
+                            <label>Last name</label>
+                              {{ form.last_name }}
+                          </div> <!-- form-group end.// -->
+                        </div> <!-- form-row end.// -->                
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label>Email Address</label>
+                            {{form.email}}
+                          </div> <!-- form-group end.// -->
+                          <div class="form-group col-md-6">
+                            <label>Phone Number</label>
+                            {{form.phone_number}}
+                          </div> <!-- form-group end.// -->
+                        </div> <!-- form-row.// -->
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label>Create password</label>
+                              {{ form.password }}
+                          </div> <!-- form-group end.// -->
+                          <div class="form-group col-md-6">
+                            <label>Repeat password</label>
+                            {{form.confirm_password}}
+                          </div> <!-- form-group end.// -->
+                        </div>
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+                          </div> <!-- form-group// -->
+                      {{ form.email.errors }}
+                      {{ form.non_field_errors }}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+  </section>
+
+
+{% endblock content %}
